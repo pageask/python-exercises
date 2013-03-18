@@ -1,3 +1,7 @@
+from itertools import islice
+from itertools import takewhile
+
+
 def check_key(key):
     if not isinstance(key, (int, long)):
         raise TypeError
@@ -23,9 +27,17 @@ class ArithmeticSequence:
         check_key(key)
         self.changed[key] = value
 
+    def gen(self):
+        i = 0
+        while True:
+            yield self[i]
+            i += 1
+
 
 if __name__ == "__main__":
     s = ArithmeticSequence(1, 2)
+    print list(islice(s.gen(), 11))
+    print list(takewhile(lambda e: e < 10, s.gen()))
     print s[4]
     print s[4]
     s[4] = 2
