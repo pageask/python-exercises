@@ -14,6 +14,17 @@ class FibsIter:
 
 if __name__ == "__main__":
     fibs_iter = FibsIter()
+
+    # Python compiles it to:
+    # iterator = fibs_iter.__iter__()
+    # while True:
+    #     try:
+    #         i = iterator.next()
+    #     except StopIteration:
+    #         break
+    #     if i > 1000:
+    #         print i
+    #         break
     for i in fibs_iter:
         if i > 1000:
             print i
